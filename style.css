@@ -30,7 +30,8 @@ body, .words-input {
 .words-display{
     margin: 1rem;
     margin-left:calc(-1rem + 2px);
-    margin-right:calc(-1rem + 2px); 
+    margin-right:calc(-1rem + 2px);
+    color: rgb(204,241,239); 
 }
 .words-input{
     background-color: transparent;
