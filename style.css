@@ -34,7 +34,7 @@ body, .words-input {
     color: rgb(204,241,239); 
 }
 .words-input{
-    background-color: transparent;
+    /* background-color: transparent;
     border: 2px solid ;
     outline: none;
     width:100%;
@@ -43,7 +43,14 @@ body, .words-input {
     resize: none;
     padding:.5rem 1rem;
     font-size:1rem;
-    border-radius: .5rem;
+    border-radius: .5rem; */
+    /* background: none;
+    border: none; 
+    background-color: rgba(0, 0, 0, 0); 
+    border-color: rgba(0, 0, 0, 0); */
+    opacity: 0;
+    width:1px;
+    height:1px
 }
 .quote-input:focus {
     border-color: black;
@@ -53,5 +60,4 @@ body, .words-input {
 }
 .incorrect{
     color: red;
-    text-decoration: underline;
 }
