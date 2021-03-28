@@ -1,9 +1,18 @@
+// Typing scripts
 const RANDOM_QUOTE_API_URL = 'https://api.quotable.io/random'
 const wordDisplayElement = document.getElementById("words-display")
 const wordInputElement = document.getElementById("words-input")
 const timerElement = document.getElementById("timer")
+var typed = 0;
+
 
 wordInputElement.addEventListener('input', () => {
+    typed += 1
+    if (typed == 1){
+        startTimer()
+    }
+
+
     const arrayWord = wordDisplayElement.querySelectorAll('span')
     const arrayValue = wordInputElement.value.split('')
 
@@ -13,6 +22,7 @@ wordInputElement.addEventListener('input', () => {
         if (character == null){
             characterSpan.classList.remove('correct')
             characterSpan.classList.remove('incorrect')
+
             correct = false
         }
         else if (character == characterSpan.innerText){
@@ -23,12 +33,13 @@ wordInputElement.addEventListener('input', () => {
             characterSpan.classList.add('incorrect')
             characterSpan.classList.remove('correct')
             correct = false
-
         }
+        wordInputElement.innerHTML = null
     })
 
     if (correct) {
-        renderNewQuote()
+        stopTimer()
+        // renderNewQuote()
     }
 })
 
@@ -38,22 +49,22 @@ function getRandomQuote() {
         .then(data => data.content)
 }
 async function renderNewQuote() {
+    typed = 0
+    timerElement.innerText = 0
     const quote = await getRandomQuote()
     wordDisplayElement.innerHTML = ''
     quote.split('').forEach(character => {
         const characterSpan = document.createElement("span")
-        // characterSpan.classList.add('correct')
         characterSpan.innerText = character
-        wordDisplayElement.appendChild(characterSpan)
-        
+        wordDisplayElement.appendChild(characterSpan)        
     })
     wordInputElement.value = null
-    startTimer()
+
 }
 
 let startTime
 function startTimer() {
-  timerElement.innerText = 0
+  timerElement.innerText.value += 1
   startTime = new Date()
   setInterval(() => {
     timer.innerText = getTimerTime()
@@ -64,6 +75,8 @@ function getTimerTime() {
   return Math.floor((new Date() - startTime) / 1000)
 }
 
-
-
+function stopTimer(){
+    timerElement.innerText.value = 0
+    
+}
 renderNewQuote()

@@ -60,5 +60,5 @@ body, .words-input {
 }
 .incorrect{
     color: red;
-    
+    text-decoration: underline;
 }
